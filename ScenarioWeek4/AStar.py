@@ -171,28 +171,28 @@ def reconstruct_path(cameFrom, current):
     return list(reversed(total_path))
 
 
-# print("Creating node list")
-# nodeList = createNodeList()
-# # for value in nodeList:
-# #     print(value)
-# #     print(nodeList[value].children)
-# for robo in robots:
-#     nodeList[(robo[0], robo[1])] = Node(robo[0], robo[1])
-# print("Generating graph")
-# nodeList = additionalPoints(nodeList)
-# print("-----")
+print("Creating node list")
+nodeList = createNodeList()
 # for value in nodeList:
 #     print(value)
 #     print(nodeList[value].children)
-#
-# outString = ""
-#
-# for value in nodeList:
-#     outString += "["
-#     for node in nodeList[value].children:
-#         if nodeList[value].children[-1] is node:
-#             outString += "[{x},{y}],[{x2},{y2}]".format(x=value[0], y=value[1], x2=node[0], y2=node[1])
-#         else:
-#             outString += "[{x},{y}],[{x2},{y2}],".format(x=value[0],y=value[1],x2=node[0],y2=node[1])
-#     outString += "],"
-# print(outString)
+for robo in robots:
+    nodeList[(robo[0], robo[1])] = Node(robo[0], robo[1])
+print("Generating graph")
+nodeList = additionalPoints(nodeList)
+print("-----")
+for value in nodeList:
+    print(value)
+    print(nodeList[value].children)
+
+outString = ""
+
+for value in nodeList:
+    outString += "["
+    for node in nodeList[value].children:
+        if nodeList[value].children[-1] is node:
+            outString += "[{x},{y}],[{x2},{y2}]".format(x=value[0], y=value[1], x2=node[0], y2=node[1])
+        else:
+            outString += "[{x},{y}],[{x2},{y2}],".format(x=value[0],y=value[1],x2=node[0],y2=node[1])
+    outString += "],"
+print(outString)
